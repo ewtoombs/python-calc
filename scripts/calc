@@ -1,0 +1,20 @@
+#!/bin/bash
+
+python -i -c 'from calc import *'
+
+# The same thing in pure python. Handy at times, but the above method also 
+# uses python's history, which is awesome.
+#!/usr/bin/env python
+
+#import code
+#import readline
+#import rlcompleter
+#
+#from calc import *
+#
+#vars = globals()
+#vars.update(locals())
+#readline.set_completer(rlcompleter.Completer(vars).complete)
+#readline.parse_and_bind("tab: complete")
+#shell = code.InteractiveConsole(vars)
+#shell.interact()
