@@ -1,5 +1,5 @@
 # calc
-###_for python_
+### _for python_
 
 Everything you've ever wanted in a scientific calculator, implemented with 
 python. Supports SI prefixes, unit conversions, physical constants, output and 
