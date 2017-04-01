@@ -12,7 +12,7 @@ happiness. Minimalist.
 
 ## installing
 Installing is pretty standard python fare. Combine `./setup.py install 
---root=prefix` with the package manager of your choice. Some crazy person 
+--root=$prefix` with the package manager of your choice. Some crazy person 
 maintains an AUR package, so you Arch Linux users can do `pacaur -S 
 python-calc`.
 
