@@ -24,11 +24,6 @@ def factor(n):
                 break
     return l
 
-# Formatting shortcuts.
-def hex(n):
-    print('{:x}'.format(n))
-def bin(n):
-    print('{:b}'.format(n))
 # Evaluate, and print. I just can't think of a way to do this without an 
 # eval(). Besides just feeling dirty, it also means syntax errors that can 
 # only be caught at runtime, so keep the expression in the input string as 
