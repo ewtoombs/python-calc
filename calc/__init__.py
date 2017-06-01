@@ -73,15 +73,24 @@ def time2str(t):
 def tprint(t):
     print(time2str(t))
 
-# For entering a lot of data at once at a keyboard.
-def readlist():
-    a = []
+def readiter():
     while True:
         s = input()
         if s == '':
-            break
-        a.append(s)
-    return a
+            return
+        yield s
+
+def read(f):
+    while True:
+        s = input()
+        if s == '':
+            return
+        f(s)
+
+
+# For entering a lot of data at once at a keyboard.
+def readlist():
+    return list(readiter())
 # Parsing shortcuts.
 def parseints():
     return [int(n) for n in readlist()]
