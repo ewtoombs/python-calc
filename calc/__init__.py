@@ -81,12 +81,12 @@ def readiter():
         yield s
 
 def read(f):
-    while True:
-        s = input()
-        if s == '':
-            return
+    for s in readiter():
         f(s)
 
+def repl(f):
+    for s in readiter():
+        print(f(s))
 
 # For entering a lot of data at once at a keyboard.
 def readlist():
