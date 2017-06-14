@@ -52,14 +52,23 @@ def time2str(t):
     years = int(t//year)
     t %= year
     days = int(t//day)
-    seconds = t%day
+    t %= day
+    hours = int(t//hour)
+    t %= hour
+    minutes = int(t//minute)
+    t %= minute
+    seconds = t%minute
     l = []
     if years != 0:
         l.append(str(years) + ' years')
     if days != 0:
         l.append(str(days) + ' days')
-    if seconds != 0:
-        l.append(str(floor(seconds)) + ' seconds')
+    if hours != 0:
+        l.append(str(hours) + ' hours')
+    if minutes != 0:
+        l.append(str(minutes) + ' minutes')
+
+    l.append(str(floor(seconds)) + ' seconds')
 
     if l == []:
         return '0 seconds'
