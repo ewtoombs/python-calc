@@ -3,12 +3,12 @@
 
 Everything you've ever wanted in a scientific calculator, implemented with 
 python. Supports SI prefixes, unit conversions, physical constants, output and 
-formatting shortcuts like `hex()`, and addresses a few of the shortcomings of 
-vanilla math from the python standard library. Comes with all of the fixin's 
-of the python language, including ability to define variables, lists, and 
-functions on the fly, as well as import numpy, pyplot, scipy, sympy, whatever. 
-Imbued with awesomeness and miracles. Guaranteed to increase physicist 
-happiness. Minimalist.
+formatting shortcuts, and addresses a few of the shortcomings of vanilla math 
+from the python standard library. Comes with all of the fixin's of the python 
+language, including ability to define variables, lists, and functions on the 
+fly. Though they are not dependencies, it is also possible and handy to import 
+numpy, pyplot, scipy, sympy, etc.  Imbued with awesomeness and miracles.  
+Guaranteed to increase physicist happiness.  Minimalist.
 
 ## installing
 Installing is pretty standard python fare. Combine `./setup.py install 
