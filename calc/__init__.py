@@ -1,24 +1,31 @@
 from math import *
 del pi
-from calc.constants import *
+from .constants import *
 from functools import reduce
+from time import time
 
 # Functions missing from math.
-# Negative One To The n, where n is an integer.
+
+
 def nott(n):
+    """Negative One To The n, where n is an integer."""
     return 1 - 2*(n & 1)
-# Divide a by b, ignoring any divides by zero.
+
+
 def div_ignore(a, b):
+    """Divide a by b, ignoring any divides by zero."""
     import warnings
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
         return a/b
-# Factor n.
+
+
 def factor(n):
+    """Factor n."""
     l = []
     while n != 1:
         for i in range(2, n+1):
-            if n%i == 0:
+            if n % i == 0:
                 n //= i
                 l.append(i)
                 break
@@ -48,6 +55,36 @@ def eprint(s):
 
     print('{} = {}'.format(s, res))
 
+
+def nprint(expr):
+    """
+    Name and print. It's dirty, but sometimes that's what's needed.
+    :param expr: The value of an expression that you want to print. First the
+    expression as it appears at the function call, and then the value of the
+    expression, will be printed. The expression must be contained on one line.
+    """
+
+    import re
+    from inspect import currentframe, getouterframes
+
+    frameinfo = getouterframes(currentframe())[1]
+    traceback = frameinfo.code_context[0].strip()
+
+    s = re.search(r'nprint\((.*)\)', traceback).group(1)
+    res = str(expr)
+
+    # dirtiness is done, string representation of s is in res.
+
+    # If there are newlines in the string representation of res, it's probably a
+    # good idea to separate the 's = ' from the rest, since the code that 
+    # generated the string representation is expecting indentation to be
+    # constant for all lines.
+    if '\n' in res:
+        res = '\n' + res
+
+    print('{} = {}'.format(s, res))
+
+
 def time2str(t):
     years = int(t//year)
     t %= year
@@ -57,7 +94,7 @@ def time2str(t):
     t %= hour
     minutes = int(t//minute)
     t %= minute
-    seconds = t%minute
+    seconds = t % minute
     l = []
     if years != 0:
         l.append(str(years) + ' years')
@@ -78,9 +115,12 @@ def time2str(t):
         if l == []:
             return s
         s += ', '
-# Print a time.
+
+
 def tprint(t):
+    """Print a time."""
     print(time2str(t))
+
 
 def readiter():
     while True:
@@ -89,52 +129,71 @@ def readiter():
             return
         yield s
 
+
 def read(f):
     for s in readiter():
         f(s)
+
 
 def repl(f):
     for s in readiter():
         print(f(s))
 
-# For entering a lot of data at once at a keyboard.
+
 def readlist():
+    """For entering a lot of data at once at a keyboard."""
     return list(readiter())
+
 # Parsing shortcuts.
+
+
 def parseints():
     return [int(n) for n in readlist()]
+
+
 def parsefloats():
     return [float(x) for x in readlist()]
 
-# Returns a new sequence with i missing. Mysteriously missing from the 
-# standard library.
+
 def seq_del(s, i):
+    """
+    Returns a new sequence with i missing. Mysteriously missing from the
+    standard library.
+    """
     return s[:i] + s[i+1:]
 
-# These were mysteriously missing from the standard library.
+
 def foldl(f, x, l):
+    """These were mysteriously missing from the standard library."""
     z = x
     for n in range(len(l)):
         z = f(z, l[n])
     return z
+
+
 def foldr(f, l, x):
     z = x
     for n in range(len(l) - 1, -1, -1):
         z = f(l[n], z)
     return z
-# Apply binary operator f, right associative, i.e. f(a0, f(a1, a2)).
+
+
 def reduce_r(f, args):
+    """Apply binary operator f, right associative, i.e. f(a0, f(a1, a2))."""
     assert len(args) >= 2
     return foldr(f, args[:-1], args[-1])
 
-# Function composition. Also, effectively a matrix multiply for linear 
+# Function composition. Also, effectively a matrix multiply for linear
 # operators in a function representation.
+
+
 def comp2(a, b):
     return lambda v: a(b(v))
+
+
 def comp(*args):
     return reduce_r(comp2, args)
 
-# Programs that do a lot of imports before starting can execute this function 
-# after the imports are done.
-def loaded():
-    print('Program is loaded.')
+
+def norm_cdf(x):
+    return (erf(x/sqrt(2)) + 1)/2

@@ -159,11 +159,11 @@ g = 9.80665*metre/second**2
 # obscure shit like rods or grains or slugs or whatever.
 
 # mass
-pound = 453.59237*gram # exact, from SI
+pound = 453.59237*gram  # exact, from SI
 ounce = pound/16
 
 # length
-inch = 25.4*milli*metre # exact, from SI
+inch = 25.4*milli*metre  # exact, from SI
 foot = 12*inch
 mile = 5280*foot
 
@@ -225,7 +225,7 @@ a0 = 5.2917721092e-11*metre
 c0 = 299792458*metre/second
 mu0 = tau*2e-7*newton/ampere**2
 ep0 = 1/(mu0*c0**2)
-kc = 1/(2*tau*ep0) # Coulomb's constant
+kc = 1/(2*tau*ep0)  # Coulomb's constant
 
 
 me = 9.10938291e-31*grave     # mass of an electron
