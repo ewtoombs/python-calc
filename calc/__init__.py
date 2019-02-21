@@ -197,3 +197,16 @@ def comp(*args):
 
 def norm_cdf(x):
     return (erf(x/sqrt(2)) + 1)/2
+
+
+def iso2unix(s):
+    from datetime import datetime
+    import pytz
+    return datetime.strptime(s, '%Y-%m-%d %H:%M:%S.%f') \
+            .replace(tzinfo=pytz.utc) \
+            .timestamp()
+
+
+def unix2iso(t):
+    from datetime import datetime
+    return datetime.utcfromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S.%f')
