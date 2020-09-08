@@ -175,6 +175,9 @@ inch = 25.4*milli*metre  # exact, from SI
 foot = 12*inch
 mile = 5280*foot
 
+# area
+acre = 4046.8564224  # the international acre
+
 # volume (The machine unit is one cubic metre. This machine unit was
 # chosen to simplify precisely the kind of calculations that follow here. See
 # the litre above for more.)
