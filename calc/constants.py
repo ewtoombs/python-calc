@@ -236,6 +236,11 @@ a0 = 5.2917721092e-11*metre
 
 # This one is exact and defines the metre from the second.
 c0 = 299792458*metre/second
+# This only works for the word "light" used in measures of distance---not time.
+# But hardly anybody ever uses expressions like "light metres", even though
+# they could. So, this is basically fine. Example: a lightyear is simply
+# light*year.
+light = c0
 mu0 = tau*2e-7*newton/ampere**2
 ep0 = 1/(mu0*c0**2)
 kc = 1/(2*tau*ep0)  # Coulomb's constant
@@ -252,3 +257,5 @@ eV = qe*volt
 rE = 6.3710*mega*metre
 # mass of Earth
 mE = 5.97219e24*grave
+
+au = 149.597870700*giga*metre  # exact
