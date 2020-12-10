@@ -220,5 +220,8 @@ def eng(x):
         'kilo', 'mega', 'giga', 'tera', 'peta', 'exa', 'zetta', 'yotta'
     ]
     oom0 = -8  # oom of element 0 of osom
+    # While there is a faster and ever-so-slightly-more-reliable method than a
+    # floor log, it won't actually be faster if implemented in python, and the
+    # difference in reliability is negligible.
     oom = floor(log(x)/log(1000))
     print(str(x * 1000**-oom) + ' ' + osom[oom - oom0])
