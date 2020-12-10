@@ -210,3 +210,15 @@ def iso2unix(s):
 def unix2iso(t):
     from datetime import datetime
     return datetime.utcfromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S.%f')
+
+
+def eng(x):
+    """Display in engineering notation."""
+    osom = [
+        'yocto', 'zepto', 'atto', 'femto', 'pico', 'nano', 'micro', 'milli',
+        '',
+        'kilo', 'mega', 'giga', 'tera', 'peta', 'exa', 'zetta', 'yotta'
+    ]
+    oom0 = -8  # oom of element 0 of osom
+    oom = floor(log(x)/log(1000))
+    print(str(x * 1000**-oom) + ' ' + osom[oom - oom0])
