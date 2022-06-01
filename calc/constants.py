@@ -100,8 +100,8 @@ yocto = 1e-24
 # regular scale.  You would break the bank, since there isn't even a prefix big
 # enough, though you could write 5 000 yottagraves.  Yotta doesn't match with
 # mega, but meva does.
-yovva = 1e72
-zevva = 1e63
+yova = 1e72
+zeva = 1e63
 eva = 1e54
 peva = 1e45
 teva = 1e36
@@ -109,14 +109,34 @@ giva = 1e27
 meva = 1e18
 kivo = 1e9
 
-mivvi = 1e-9
+mivi = 1e-9
 micvo = 1e-18
 navo = 1e-27
 pivo = 1e-36
 femvo = 1e-45
-avvo = 1e-54
+avo = 1e-54
 zepvo = 1e-63
 yocvo = 1e-72
+
+# Surface area SI prefixes. Same idea. They can even be used on mass when the
+# mass is covering a surface, and so, varies by area instead of by volume.
+yosa = 1e48
+zesa = 1e42
+esa = 1e36
+pesa = 1e30
+tesa = 1e24
+gisa = 1e18
+mesa = 1e12
+kiso = 1e6
+
+misi = 1e-6
+micso = 1e-12
+naso = 1e-18
+piso = 1e-24
+femso = 1e-30
+aso = 1e-36
+zepso = 1e-42
+yocso = 1e-48
 
 # Dealing with non-machine units and translations: All quantities are always 
 # stored in the machine translation in this context, so to store a non-machine 
