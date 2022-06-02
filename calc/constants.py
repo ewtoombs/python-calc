@@ -9,39 +9,37 @@ sqrt3 = 1.7320508075688772
 
 # To keep things clear, in this context, the noun "quantity" will be used to
 # refer to a real number with dimension. Examples are 5 kg and 400 nm. A unit
-# is a standard quantity used to express other quantities. A quantity
-# expressed in terms of a dimensionless real number multiplied by a standard
-# unit shall be provisionally called a "translation". It has two parts: the
-# dimensionless real number and the unit. The dimensionless real number shall be provisionally called
-# the "word". For example, 5000 g and 5 kg are translations of the same
-# quantity. For 5000 g, 5000 is the word and g is the unit. A physical constant
-# like hb is a quantity with many translations, depending on the conventions
-# of the field. (The inspiration for the new terms is that the same object may
-# be referred to in different languages with different words. Each (word,
-# language) pair is a translation of the same object. In this context, the
-# unit is like the language.)
+# is a standard quantity used to express other quantities. A quantity expressed
+# in terms of a dimensionless real number multiplied by a standard unit shall
+# be provisionally called a "translation". It has two parts: the dimensionless
+# real number and the unit. The dimensionless real number shall be
+# provisionally called the "word". For example, 5000 g and 5 kg are
+# translations of the same quantity. For 5000 g, 5000 is the word and g is the
+# unit. A physical constant like hb is a quantity with many translations,
+# depending on the conventions of the field. (The inspiration for the new terms
+# is that the same object may be referred to in different languages with
+# different words. Each (word, language) pair is a translation of the same
+# object. In this context, the unit is like the language.)
 
 # Ultimately, all quantities must be stored in a machine as just a word, with
 # some kind of implied unit (and translation). A "machine unit" (and machine
 # translation) is the unit that is implied by default. For example, right now
 # metre is a machine unit, so if a variable represents a length, that length is
-# in metres. The
-# machine units for physical quantities in this context are the SI base and
-# derived units: s, grave, m, etc. for the base units and N, J, W, Pa, Ohm, etc.
-# for the derived units.
+# in metres. The machine units for physical quantities in this context are the
+# SI base and derived units: s, grave, m, etc. for the base units and N, J, W,
+# Pa, Ohm, etc. for the derived units.
 
 
 # The machine units
 # =================
 # A variable for each of the machine units has been made. Each is equal to 1.
 # These are more for documentation than anything, so that you can define
-# quantities in your code like this: t = 40*second and it is completely
-# clear that t is a time and the time is 40 seconds. But if for whatever
-# reason, second ceases to be a base unit (for instance in a relativity
-# context, time is often measured in metres), no change to the code will be
-# necessary.
+# quantities in your code like this: t = 40*second and it is completely clear
+# that t is a time and the time is 40 seconds. But if for whatever reason,
+# second ceases to be a base unit (for instance in a relativity context, time
+# is often measured in metres), no change to the code will be necessary.
 second = 1.0
-# My solution to the awkward presence of kilo in the base unit, which was 
+# My solution to the awkward presence of kilo in the base unit, which was
 # always a stupid idea.
 grave = 1.0
 kilogram = grave  # just in case lol
@@ -59,8 +57,8 @@ radian = 1.0
 # Some derived machine units. They are not set to 1 in case fiddling with the
 # base machine units is necessary. For instance, in quantum mechanics
 # simulations, it can be useful to set hb to 1, removing kg as a base unit (and
-# as a machine unit). grave will no longer equal 1, so any units here that
-# rely on it will change as well.
+# as a machine unit). grave will no longer equal 1, so any units here that rely
+# on it will change as well.
 newton = grave*metre/second**2
 pascal = newton/metre**2
 joule = newton*metre
@@ -122,9 +120,9 @@ avo = 1e-54
 zepvo = 1e-63
 yocvo = 1e-72
 
-# Surface area SI prefixes. Same idea. They can be used on mass when the
-# mass is covering a surface, and so, varies by area instead of by volume. This
-# more relevant for the mass of a lake, or a layer of paint, for instance.
+# Surface area SI prefixes. Same idea. They can be used on mass when the mass
+# is covering a surface, and so, varies by area instead of by volume. This more
+# relevant for the mass of a lake, or a layer of paint, for instance.
 yosa = 1e48
 zesa = 1e42
 esa = 1e36
@@ -143,18 +141,18 @@ aso = 1e-36
 zepso = 1e-42
 yocso = 1e-48
 
-# Dealing with non-machine units and translations: All quantities are always 
-# stored in the machine translation in this context, so to store a non-machine 
-# translation, conversion is done immediately. Since all units are quantities, 
-# non-machine units are treated as such when represented in this context, i.e. 
-# they are given a variable name and stored in the base units. The form for 
-# storing non-machine translations is thus quantity = word*unit. For example, 
-# height = 6*inch or theta = 90*deg. Thus conversion of a stored quantity to a 
-# non-machine translation (for the purpose of display usually) will look like 
-# this: quantity /unit. It is read "quantity in units". For example, 
-# height/inch is "height in inches". Consequently, conversion to and from 
-# non-machine translations looks like this: word*unit1 /unit2. It is read 
-# "word unit1s in unit2s". For example, 100*inch /foot is "100 inches in feet".
+# Dealing with non-machine units and translations: All quantities are always
+# stored in the machine translation in this context, so to store a non-machine
+# translation, conversion is done immediately. Since all units are quantities,
+# non-machine units are treated as such when represented in this context, i.e.
+# they are given a variable name and stored in the base units. The form for
+# storing non-machine translations is thus quantity = word*unit. For example,
+# height = 6*inch or theta = 90*deg. Thus conversion of a stored quantity to a
+# non-machine translation (for the purpose of display usually) will look like
+# this: quantity /unit. It is read "quantity in units". For example,
+# height/inch is "height in inches". Consequently, conversion to and from
+# non-machine translations looks like this: word*unit1 /unit2. It is read "word
+# unit1s in unit2s". For example, 100*inch /foot is "100 inches in feet".
 #
 # Sometimes, a foreign function outputs a value that isn't in machine units. To
 # convert, just use the fact that the function outputs a word, and provide the
@@ -191,15 +189,15 @@ litre = metre**3/1000
 angstrom = 100*pico*metre
 
 
-# Standard gravitational acceleration. Though technically a physical constant, 
-# it is exact for units like poundf, but average for the actual acceleration 
+# Standard gravitational acceleration. Though technically a physical constant,
+# it is exact for units like poundf, but average for the actual acceleration
 # due to gravity, which varies from place to place.
 g = 9.80665*metre/second**2
 
 
-# The horrible units. All quantities here are exact, and derived from SI 
-# units. I only cover the reasonably common ones. I don't do any of the REALLY 
-# obscure shit like rods or grains or slugs or whatever.
+# The horrible units. All quantities here are exact, and derived from SI units.
+# I only cover the reasonably common ones. I don't do any of the REALLY obscure
+# shit like rods or grains or slugs or whatever.
 
 # mass
 pound = 453.59237*gram  # exact, from SI
@@ -213,19 +211,19 @@ mile = 5280*foot
 # area
 acre = 4046.8564224  # the international acre
 
-# volume (The machine unit is one cubic metre. This machine unit was
-# chosen to simplify precisely the kind of calculations that follow here. See
-# the litre above for more.)
+# volume (The machine unit is one cubic metre. This machine unit was chosen to
+# simplify precisely the kind of calculations that follow here. See the litre
+# above for more.)
 gallon = 231*inch**3
 floz = gallon/128
 #quart = gallon/4
 #pint = gallon/8
-# One Apple gallon. No, just kidding. It's one imperial gallon, i.e. Great 
-# Britain's gallon. It is defined exactly from litres these days, so this is 
+# One Apple gallon. No, just kidding. It's one imperial gallon, i.e. Great
+# Britain's gallon. It is defined exactly from litres these days, so this is
 # also an entry point from SI. Defined to the nearest 10*micro*litre.
 igallon = 4.54609*litre  # exact, from SI
-# This one is included in honour of one of the most common ways of buying 
-# liquour in Canada *to this day*: The imperial quart. (approximitely 1.14 L. 
+# This one is included in honour of one of the most common ways of buying
+# liquour in Canada *to this day*: The imperial quart. (approximitely 1.14 L.
 # Sound familiar?)
 iquart = igallon/4
 ifloz = igallon/160
@@ -233,8 +231,8 @@ ifloz = igallon/160
 # some others.
 # Pound force in newtons
 poundf = pound*g
-# Pounds per square inch, in pascals. The unit is named ppsi so psi can be 
-# used as a Greek letter.
+# Pounds per square inch, in pascals. The unit is named ppsi so psi can be used
+# as a Greek letter.
 ppsi = poundf/inch**2
 
 # Time, the most horrible unit of them all.
@@ -252,8 +250,8 @@ month = year/12
 # ==================
 # Planck's constant.
 hb = 1.05457162853e-34*joule*second
-# Non-reduced Planck's constant. Just h is too assertive over the namespace. 
-# Ideally, this whole file could be imported without a prefix, i.e. from 
+# Non-reduced Planck's constant. Just h is too assertive over the namespace.
+# Ideally, this whole file could be imported without a prefix, i.e. from
 # constants import *
 hnr = tau*hb
 kb = 1.3806505e-23*joule/kelvin
