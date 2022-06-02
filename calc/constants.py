@@ -11,19 +11,19 @@ sqrt3 = 1.7320508075688772
 # refer to a real number with dimension. Examples are 5 kg and 400 nm. A unit
 # is a standard quantity used to express other quantities. A quantity
 # expressed in terms of a dimensionless real number multiplied by a standard
-# unit shall be provisionally called a "translation".  It has two parts: the
+# unit shall be provisionally called a "translation". It has two parts: the
 # dimensionless real number and the unit. The dimensionless real number shall be provisionally called
-# the "word".  For example, 5000 g and 5 kg are translations of the same
+# the "word". For example, 5000 g and 5 kg are translations of the same
 # quantity. For 5000 g, 5000 is the word and g is the unit. A physical constant
 # like hb is a quantity with many translations, depending on the conventions
-# of the field.  (The inspiration for the new terms is that the same object may
-# be referred to in different languages with different words.  Each (word,
-# language) pair is a translation of the same object.  In this context, the
+# of the field. (The inspiration for the new terms is that the same object may
+# be referred to in different languages with different words. Each (word,
+# language) pair is a translation of the same object. In this context, the
 # unit is like the language.)
 
 # Ultimately, all quantities must be stored in a machine as just a word, with
 # some kind of implied unit (and translation). A "machine unit" (and machine
-# translation) is the unit that is implied by default.  For example, right now
+# translation) is the unit that is implied by default. For example, right now
 # metre is a machine unit, so if a variable represents a length, that length is
 # in metres. The
 # machine units for physical quantities in this context are the SI base and
@@ -59,7 +59,7 @@ radian = 1.0
 # Some derived machine units. They are not set to 1 in case fiddling with the
 # base machine units is necessary. For instance, in quantum mechanics
 # simulations, it can be useful to set hb to 1, removing kg as a base unit (and
-# as a machine unit).  grave will no longer equal 1, so any units here that
+# as a machine unit). grave will no longer equal 1, so any units here that
 # rely on it will change as well.
 newton = grave*metre/second**2
 pascal = newton/metre**2
@@ -99,7 +99,7 @@ yocto = 1e-24
 # mevatons. Its volume is about 1000 Mm^3. From here, you can use the numbers
 # directly, since the meva cancels the mega cubed. 5000 mevatons/1000Mm^3 = 5
 # tons/m^3, or five times denser than water. You couldn't do that with the
-# regular scale.  You would break the bank, since there isn't even a prefix big
+# regular scale. You would break the bank, since there isn't even a prefix big
 # enough, though you could write 5 000 yottagraves. Meanwhile, the volumetric
 # prefixes go all the way up to 1e+-72, well into and possibly exceeding even
 # all known astronomical and particle physics applications. Yotta doesn't match
@@ -146,14 +146,14 @@ yocso = 1e-48
 # Dealing with non-machine units and translations: All quantities are always 
 # stored in the machine translation in this context, so to store a non-machine 
 # translation, conversion is done immediately. Since all units are quantities, 
-# non-machine units are treated as such when represented in this context, i.e.  
-# they are given a variable name and stored in the base units.  The form for 
-# storing non-machine translations is thus quantity = word*unit.  For example, 
-# height = 6*inch or theta = 90*deg.  Thus conversion of a stored quantity to a 
+# non-machine units are treated as such when represented in this context, i.e. 
+# they are given a variable name and stored in the base units. The form for 
+# storing non-machine translations is thus quantity = word*unit. For example, 
+# height = 6*inch or theta = 90*deg. Thus conversion of a stored quantity to a 
 # non-machine translation (for the purpose of display usually) will look like 
-# this: quantity /unit.  It is read "quantity in units". For example, 
-# height/inch is "height in inches".  Consequently, conversion to and from 
-# non-machine translations looks like this: word*unit1 /unit2.  It is read 
+# this: quantity /unit. It is read "quantity in units". For example, 
+# height/inch is "height in inches". Consequently, conversion to and from 
+# non-machine translations looks like this: word*unit1 /unit2. It is read 
 # "word unit1s in unit2s". For example, 100*inch /foot is "100 inches in feet".
 #
 # Sometimes, a foreign function outputs a value that isn't in machine units. To
@@ -221,11 +221,11 @@ floz = gallon/128
 #quart = gallon/4
 #pint = gallon/8
 # One Apple gallon. No, just kidding. It's one imperial gallon, i.e. Great 
-# Britain's gallon.  It is defined exactly from litres these days, so this is 
+# Britain's gallon. It is defined exactly from litres these days, so this is 
 # also an entry point from SI. Defined to the nearest 10*micro*litre.
 igallon = 4.54609*litre  # exact, from SI
 # This one is included in honour of one of the most common ways of buying 
-# liquour in Canada *to this day*: The imperial quart. (approximitely 1.14 L.  
+# liquour in Canada *to this day*: The imperial quart. (approximitely 1.14 L. 
 # Sound familiar?)
 iquart = igallon/4
 ifloz = igallon/160
@@ -252,7 +252,7 @@ month = year/12
 # ==================
 # Planck's constant.
 hb = 1.05457162853e-34*joule*second
-# Non-reduced Planck's constant. Just h is too assertive over the namespace.  
+# Non-reduced Planck's constant. Just h is too assertive over the namespace. 
 # Ideally, this whole file could be imported without a prefix, i.e. from 
 # constants import *
 hnr = tau*hb
