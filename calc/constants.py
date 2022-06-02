@@ -1,4 +1,10 @@
-# The canonical constants of science, with an emphasis on physics.
+# The canonical constants of science, with an emphasis on physics. Ideally,
+# this whole file could be imported without a prefix, i.e.
+# from constants import *
+# This has had some influence over certain variable names. For instance, just h
+# for Planck's constant and e for the elementary charge is too assertive over
+# the namespace, so they were named hnr and qe respectively.
+# 
 
 tau = 6.283185307179586
 sqrttau = 2.5066282746310002
@@ -245,50 +251,48 @@ year = 365.25*day
 # A typical month, as 1/12 of a Julian year.
 month = year/12
 
+# SI defining constants (EXACT!!! :D)
+c0 = 299792458*metre/second  # exact, but old news.
+# Non-reduced Planck's constant.
+hnr = 6.62607015e-34*joule*second  # EXACT!!!!! :D :D :D
+qe = 1.602176634e-19*coulomb     # elemental charge. EXACT!!!!!!
+kb = 1.380649e-23*joule/kelvin  # EXACT!!!!! :D :D :D
+NA = 6.02214076e23  # EXACT!!!!! :D :D :D
 
-# Physical Constants
-# ==================
+# Derivatives of defining SI constants. Also all exact.
+# "light" as a prefix. This only works for the word "light" used in measures of
+# distance---not time. But hardly anybody ever uses expressions like "light
+# metres", even though they could. So, this is basically fine. Example: a
+# lightyear is simply light*year.
+light = c0
 # Planck's constant.
-hb = 1.05457162853e-34*joule*second
-# Non-reduced Planck's constant. Just h is too assertive over the namespace.
-# Ideally, this whole file could be imported without a prefix, i.e. from
-# constants import *
-hnr = tau*hb
-kb = 1.3806505e-23*joule/kelvin
-NA = 6.0221415e23
+hb = hnr/tau
+# The electron volt.
+eV = qe*volt
 mole = NA
 amu = gram/NA
-
-G = 6.67384e-11*newton*metre**2/grave**2
-
 # Ideal gas constant
 RG = NA*kb
 
-# Bohr radius
-a0 = 5.2917721092e-11*metre
+# Other defining constants
+au = 149.597870700*giga*metre  # exact
 
-# This one is exact and defines the metre from the second.
-c0 = 299792458*metre/second
-# This only works for the word "light" used in measures of distance---not time.
-# But hardly anybody ever uses expressions like "light metres", even though
-# they could. So, this is basically fine. Example: a lightyear is simply
-# light*year.
-light = c0
-mu0 = tau*2e-7*newton/ampere**2
+# Physical Constants
+# ==================
+
+G = 6.67384e-11*newton*metre**2/grave**2
+
+mu0 = 1.256637062012e-7*newton/ampere**2  # NO LONGER EXACT!
 ep0 = 1/(mu0*c0**2)
 kc = 1/(2*tau*ep0)  # Coulomb's constant
 
-
 me = 9.10938291e-31*grave     # mass of an electron
 mp = 1.672621777e-27*grave    # mass of a proton
-qe = 1.602176565e-19*coulomb     # fundamental charge
 
-# The electron volt.
-eV = qe*volt
+# Bohr radius
+a0 = hb**2 / (kc*me*qe**2)
 
 # equatorial radius of Earth
 rE = 6.3710*mega*metre
 # mass of Earth
 mE = 5.97219e24*grave
-
-au = 149.597870700*giga*metre  # exact
