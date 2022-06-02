@@ -9,13 +9,13 @@ sqrt3 = 1.7320508075688772
 
 # To keep things clear, in this context, the noun "quantity" will be used to
 # refer to a real number with dimension. Examples are 5 kg and 400 nm. A unit
-# is a standard quantity used to express other quantities. An quantity
+# is a standard quantity used to express other quantities. A quantity
 # expressed in terms of a dimensionless real number multiplied by a standard
 # unit shall be provisionally called a "translation".  It has two parts: the
-# dimensionless real number and the unit, which shall be provisionally called
+# dimensionless real number and the unit. The dimensionless real number shall be provisionally called
 # the "word".  For example, 5000 g and 5 kg are translations of the same
 # quantity. For 5000 g, 5000 is the word and g is the unit. A physical constant
-# like hb is an quantity with many translations, depending on the conventions
+# like hb is a quantity with many translations, depending on the conventions
 # of the field.  (The inspiration for the new terms is that the same object may
 # be referred to in different languages with different words.  Each (word,
 # language) pair is a translation of the same object.  In this context, the
@@ -24,11 +24,15 @@ sqrt3 = 1.7320508075688772
 # Ultimately, all quantities must be stored in a machine as just a word, with
 # some kind of implied unit (and translation). A "machine unit" (and machine
 # translation) is the unit that is implied by default.  For example, right now
-# metre is a machine unit, so all lengths are stored in metres by default.  The
+# metre is a machine unit, so if a variable represents a length, that length is
+# in metres. The
 # machine units for physical quantities in this context are the SI base and
-# derived units: s, kg, m, K for the base units and A, N, J, W, Pa, Ohm, etc.
+# derived units: s, grave, m, etc. for the base units and N, J, W, Pa, Ohm, etc.
 # for the derived units.
 
+
+# The machine units
+# =================
 # A variable for each of the machine units has been made. Each is equal to 1.
 # These are more for documentation than anything, so that you can define
 # quantities in your code like this: t = 40*second and it is completely
@@ -40,11 +44,7 @@ second = 1.0
 # My solution to the awkward presence of kilo in the base unit, which was 
 # always a stupid idea.
 grave = 1.0
-kilogram = grave
-# The ton is generally useful, but particularly for use with the volumetric 
-# prefixes below, since 1*ton lines up with 1*metre**3 in order of magnitude.  
-# (1 metre**3 of water .= 1 ton)
-ton = 1000*kilogram
+kilogram = grave  # just in case lol
 metre = 1.0
 kelvin = 1.0
 ampere = 1.0
@@ -71,8 +71,10 @@ tesla = newton/ampere/metre
 ohm = volt/ampere
 farad = coulomb/volt
 
-# The SI prefixes. Using these is straight forward. Example: 1km = 
-# 1*kilo*metre.
+
+# The SI prefixes.
+# ================
+# Using these is straight forward. Example: 1km = 1*kilo*metre.
 yotta = 1e24
 zetta = 1e21
 exa = 1e18
@@ -98,8 +100,10 @@ yocto = 1e-24
 # directly, since the meva cancels the mega cubed. 5000 mevatons/1000Mm^3 = 5
 # tons/m^3, or five times denser than water. You couldn't do that with the
 # regular scale.  You would break the bank, since there isn't even a prefix big
-# enough, though you could write 5 000 yottagraves.  Yotta doesn't match with
-# mega, but meva does.
+# enough, though you could write 5 000 yottagraves. Meanwhile, the volumetric
+# prefixes go all the way up to 1e+-72, well into and possibly exceeding even
+# all known astronomical and particle physics applications. Yotta doesn't match
+# with mega, but meva does.
 yova = 1e72
 zeva = 1e63
 eva = 1e54
@@ -118,8 +122,9 @@ avo = 1e-54
 zepvo = 1e-63
 yocvo = 1e-72
 
-# Surface area SI prefixes. Same idea. They can even be used on mass when the
-# mass is covering a surface, and so, varies by area instead of by volume.
+# Surface area SI prefixes. Same idea. They can be used on mass when the
+# mass is covering a surface, and so, varies by area instead of by volume. This
+# more relevant for the mass of a lake, or a layer of paint, for instance.
 yosa = 1e48
 zesa = 1e42
 esa = 1e36
@@ -144,15 +149,21 @@ yocso = 1e-48
 # non-machine units are treated as such when represented in this context, i.e.  
 # they are given a variable name and stored in the base units.  The form for 
 # storing non-machine translations is thus quantity = word*unit.  For example, 
-# height= 6*inch or theta = 90*deg.  Thus conversion of a stored quantity to a 
+# height = 6*inch or theta = 90*deg.  Thus conversion of a stored quantity to a 
 # non-machine translation (for the purpose of display usually) will look like 
-# this: quantity/unit.  It is read "quantity in units". For example, 
+# this: quantity /unit.  It is read "quantity in units". For example, 
 # height/inch is "height in inches".  Consequently, conversion to and from 
-# non-machine translations looks like this: word*unit1/unit2.  It is read 
-# "word unit1s in unit2s". For example, 100*inch/foot is "100 inches in feet".
+# non-machine translations looks like this: word*unit1 /unit2.  It is read 
+# "word unit1s in unit2s". For example, 100*inch /foot is "100 inches in feet".
+#
+# Sometimes, a foreign function outputs a value that isn't in machine units. To
+# convert, just use the fact that the function outputs a word, and provide the
+# unit. So, if a foreign function outputs degrees, you'd write
+# angle = foreign_angle(...)*deg
 
-# These are the non-machine units:
 
+# The non-machine units
+# =====================
 # data
 byte = 8*bit
 KB = 1024*byte
@@ -165,7 +176,11 @@ deg = tau/360*radian
 
 # The gram in graves. Handy for expressions like micro*gram.
 gram = milli*grave
-# the litre. Not a machine unit. This was to make volume math like V = 2*tau/3
+# The ton is generally useful, but particularly for use with the volumetric
+# prefixes, since 1*ton lines up with 1*metre**3 in order of magnitude. (1
+# metre**3 of water .= 1 ton)
+ton = 1000*grave
+# The litre. Not a machine unit. This was to make volume math like V = 2*tau/3
 # * r**3 easier. A machine unit of one litre would make a total mess of that
 # formula. Like any non-machine unit, if you want litres, do a conversion at
 # the point of need like foreign_function_requires_litres(V/litre) or
