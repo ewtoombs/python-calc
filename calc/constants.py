@@ -178,6 +178,7 @@ sector = 512*byte
 # the degree
 deg = tau/360*radian
 
+hectare = 10000*metre**2
 # The gram in graves. Handy for expressions like micro*gram.
 gram = milli*grave
 # The ton is generally useful, but particularly for use with the volumetric
