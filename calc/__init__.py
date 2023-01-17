@@ -201,9 +201,11 @@ def norm_cdf(x):
 
 def iso2unix(s):
     from datetime import datetime, timezone
-    return datetime.strptime(s, '%Y-%m-%d %H:%M:%S.%f') \
-            .replace(tzinfo=timezone.utc) \
+    return (
+        datetime.fromisoformat(s)
+            .replace(tzinfo=timezone.utc)
             .timestamp()
+    )
 
 
 def unix2iso(t):
