@@ -259,6 +259,7 @@ hnr = 6.62607015e-34*joule*second  # EXACT!!!!! :D :D :D
 qe = 1.602176634e-19*coulomb     # elemental charge. EXACT!!!!!!
 kb = 1.380649e-23*joule/kelvin  # EXACT!!!!! :D :D :D
 NA = 6.02214076e23  # EXACT!!!!! :D :D :D
+zeroC = 273.15*kelvin  # EXACT!!!!! :D :D :D
 
 # Derivatives of defining SI constants. Also all exact.
 # "light" as a prefix. This only works for the word "light" used in measures of

@@ -226,3 +226,10 @@ def eng(x):
     # difference in reliability is negligible.
     oom = floor(log(x)/log(1000))
     print(str(x * 1000**-oom) + ' ' + osom[oom - oom0])
+
+
+def fromF(f):  # returns kelvins
+    return (f - 32)*5/9 + zeroC
+
+def toF(T):
+    return (T - zeroC)*9/5 + 32
